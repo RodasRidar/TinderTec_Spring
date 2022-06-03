@@ -26,5 +26,16 @@ public class MeGustasController {
 
 		return "MeGustas/MeGustas";
 		}
+	@PostMapping("/MeGustas")
+	public String ProcesarMegustas( Model model) {
+		
+	//enviarle el usuario que inicio sesion
+		
+		
+		model.addAttribute("nombresYedad",BuscarAmistadController.nombresYedad);
+		model.addAttribute("f1",BuscarAmistadController.foto1);
+
+		return "MeGustas/MeGustas";
+		}
 	
 }
