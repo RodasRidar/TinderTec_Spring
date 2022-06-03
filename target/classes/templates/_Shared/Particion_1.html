@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+  <div class="first-partition"  >
+
+        <div class="content-profile" th:style="'background-image:url(' + ${f1} + ');'">
+        </div>
+        <span class="nombre-profile" >
+            <h1 th:text="${nombresYedad}" ></h1> 
+        </span>
+        <nav class="menuContainer ">
+            <ol class="menuDetails">
+                <li>
+                 <a class="link" href="/Inicio"> Inicio</a>
+                </li>
+                <li>
+                 <a class="link"  href="/Perfil" >Perfil</a>
+                </li>
+                <li>
+                 <a class="link"  href="/Chat">Chats</a>
+                </li>
+                <li>
+                    <a class="link" href="/MeGustas" >Me gustas</a>
+                </li>
+                <li>
+                 <a class="link" href="/Suscripcion" >Subscripcion</a>       
+                </il>
+                <li>
+                    <a class="link link-cerrar-sesion" >Cerrar Sesion</a>       
+                </il>
+            </ol>
+     </nav>
+    </div>
+</html>
