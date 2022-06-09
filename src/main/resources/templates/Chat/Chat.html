@@ -13,6 +13,9 @@
 <body>
 <div class="container-noBT">
 	<div th:include="_Shared/Particion_1.html" th:remove="tag"></div>
+		 <script>
+     		$("#btnMatchs").addClass("selected");
+		</script>
     <div class="second-partition">
     
     
@@ -32,7 +35,7 @@
         <header class="header">
             <div class="logoContainer">
                     <a href="index.html"  class="logo">
-                        <img src="img/tindertec_logo1.png" class="logoImg">
+                        <img th:src="@{/img/tindertec_logo1.png}"  class="logoImg">
                     </a>
             </div>
         </header>

@@ -51,6 +51,10 @@ body{
     max-height:450px;
     overflow-y: scroll;
 }
+.img_like{
+	border-radius: 15px 15px 0px 0px;
+	height: 256px;
+}
 .app{
 
     position: absolute;
@@ -66,6 +70,30 @@ body{
     flex-direction: row;
 }
 
+.cards-container{
+	overflow-y: auto;
+    height: inherit;
+    overflow-x: hidden;
+    
+    position: relative;
+    display: flex;
+    color: whitesmoke;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 15px !important;
+    background-color: rgba(0,0,0,0.4) !important;
+    
+}
+.dislikebtn{
+	font-size: 25px !important;
+    background-color: #c53b56;
+    border: solid 0px tomato;
+    margin-top: 10px;
+    padding: 2px 13px !important;
+}
 .app_match_container{
     background-color: #F0F2F4;
     width: 25%;
@@ -169,8 +197,8 @@ margin-top: 15vh;
 
     margin-top: 20px;
     max-width: 170px;
-    border: 1px solid #FF4458;
-    background: linear-gradient(to right, #fc4d6a, #fc655d,#fc3177);  ;
+    border: 1px solid silver;;
+ /*background: linear-gradient(to right, #fc4d6a, #fc655d,#fc3177);  */ 
     border-radius: 17px;
     padding: 8px 0px;
     text-align: center;
@@ -178,10 +206,16 @@ margin-top: 15vh;
     margin-left: auto;
     
 }
+.selected {
+    background: linear-gradient(45deg,#fd267a,#ff6036);
+}
 
 .menuDetails li a {
     list-style: none;
     text-decoration:none;
+    padding: 11px 28px;
+    color: black;
+    font-weight: 500;
 }
 
 .link-cerrar-sesion{

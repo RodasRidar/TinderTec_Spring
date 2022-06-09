@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MeGustasController {
 
-	//@Autowired
+	@Autowired
+	IUsuarioRepository usuRepo;
+	@Autowired
+	ILikesRepository likesRepo;
+	@Autowired
+	IDislikesRepository disLikesRepo;
 	//private IUsuarioRepository repoUsua;
 	//@GetMapping
 	//@PostMapping
@@ -23,17 +28,31 @@ public class MeGustasController {
 		
 		model.addAttribute("nombresYedad",BuscarAmistadController.nombresYedad);
 		model.addAttribute("f1",BuscarAmistadController.foto1);
+		model.addAttribute("listaUsuarios",usuRepo.USP_Listar_Usuarios_Likes(1));
 
 		return "MeGustas/MeGustas";
 		}
-	@PostMapping("/MeGustas")
-	public String ProcesarMegustas( Model model) {
-		
+	@PostMapping("/MeGustas/Eliminar")
+	public String ProcesarMegustas(@ModelAttribute Usuario usuario ,Model model) {
+		System.out.println(usuario);
 	//enviarle el usuario que inicio sesion
 		
+			disLikesRepo.USP_ELIMINAR_LIKE(1,usuario.getCod_usu());
+			//model.addAttribute("mensajeSucess", "Eliminado");
+
+	
+		if(usuRepo.USP_Listar_Usuarios_Likes(1).isEmpty()) {
+			
+			model.addAttribute("msjEliminarLike","No hay likes +");
+		}
+		else {
+			model.addAttribute("msjEliminarLike","hay usuarios");
+			model.addAttribute("listaUsuarios",usuRepo.USP_Listar_Usuarios_Likes(1));
+			}
 		
 		model.addAttribute("nombresYedad",BuscarAmistadController.nombresYedad);
 		model.addAttribute("f1",BuscarAmistadController.foto1);
+		
 
 		return "MeGustas/MeGustas";
 		}
