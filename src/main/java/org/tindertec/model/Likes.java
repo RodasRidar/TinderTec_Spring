@@ -12,6 +12,7 @@ import lombok.Data;
 public class Likes {
 	@Id
 	private int cod_like; 
+	
 	private int cod_usu ;
 	@OneToOne
 	@JoinColumn(name="cod_usu", insertable=false, updatable=false)
