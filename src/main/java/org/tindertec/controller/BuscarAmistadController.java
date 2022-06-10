@@ -1,11 +1,15 @@
 package org.tindertec.controller;
+import org.tindertec.model.Chat;
+import org.tindertec.model.Match;
 import org.tindertec.model.Usuario;
 import org.tindertec.repository.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +24,33 @@ public class BuscarAmistadController {
 	public static String edad;
 
 
-	@Autowired
+	@Autowired	
 	private IUsuarioRepository repoUsua;
 	@Autowired
 	private ILikesRepository repoLike;
 	@Autowired
 	private IDislikesRepository repoDislike;
+	@Autowired
+	private IMatchRepository repoMatch;
+	@Autowired
+	private IChatRepository repoChat;
 	
 	
+	public String obtenerEdad(String fecna) throws ParseException {
+		
+		 SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD", Locale.ENGLISH);
+			//fecna= repoUsua.findById(1).get().getFecha_naci();
+	        Date fechaNacimiento = sdf.parse(fecna);
+	        Date secondDate =  sdf.parse("2022-01-01");
+
+	        long diff = (secondDate.getTime()- fechaNacimiento.getTime())/365;
+
+	        TimeUnit time = TimeUnit.DAYS; 
+	        long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+	        edad= diffrence+"";
+	        
+		return edad;
+	}
 	@GetMapping("/")
 	public String cargarBienvenida( Model model) throws ParseException {
 
@@ -131,27 +154,163 @@ public class BuscarAmistadController {
 	
 	@GetMapping("/Chat")
 	public String cargarChat( Model model) throws ParseException {
-
+		
+	Chat chat = new Chat();
+	
+	List<Match> match;
+	match=repoMatch.USP_LISTAR_MATCH_POR_USUARIO(1);
+			
+	//enviar Match 	
+		model.addAttribute("lstMatch",match);
+			
+	//enviar chat vacio	
+		model.addAttribute("lstMensajes",chat);
+		model.addAttribute("msjNULLMensajes",0);
+		
+		model.addAttribute("MSJdeleteMatchAndMsj","");
+		
+	
+		
+		
 	//enviarle el usuario que inicio sesion
-
 		model.addAttribute("nombresYedad",nombresYedad);
 		model.addAttribute("f1",foto1);
 		return "Chat/Chat";
 		}
 	
-	public String obtenerEdad(String fecna) throws ParseException {
+	@PostMapping("/BuscarAmistad/Chat")
+	public String SeleccionarChat(@RequestParam(name="id", required=false) int id , Model model)  {
+		List<Match> match;
+		match=repoMatch.USP_LISTAR_MATCH_POR_USUARIO(1);
+		Optional<Usuario> usu2 ;
+		usu2=repoUsua.findById(id);
+		List<Chat> chat;
 		
-		 SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD", Locale.ENGLISH);
-			//fecna= repoUsua.findById(1).get().getFecha_naci();
-	        Date fechaNacimiento = sdf.parse(fecna);
-	        Date secondDate =  sdf.parse("2022-01-01");
-
-	        long diff = (secondDate.getTime()- fechaNacimiento.getTime())/365;
-
-	        TimeUnit time = TimeUnit.DAYS; 
-	        long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
-	        edad= diffrence+"";
-	        
-		return edad;
+		chat=repoChat.USP_LISTAR_MATCH_POR_USUARIO(1, id);
+		//enviar Match 	
+		model.addAttribute("lstMatch",match);
+		model.addAttribute("foto1",usu2.get().getFoto1());
+		model.addAttribute("nombres",usu2.get().getNombres());
+			
+		//enviar chat 	
+		//head
+		String ChatconNombre="Chat con "+usu2.get().getNombres();
+		model.addAttribute("Chatfoto",usu2.get().getFoto1());
+		model.addAttribute("ChatconNombre",ChatconNombre);
+		model.addAttribute("ChatUserid",id);
+		//body
+		model.addAttribute("lstMensajes",chat);
+		model.addAttribute("cod_usu_now",1);
+		model.addAttribute("cod_usu_1_msj",1);
+		model.addAttribute("cod_usu_2_msj",id); 
+		model.addAttribute("foto1_msj ",usu2.get().getFoto1()); 
+		//footer
+		model.addAttribute("cod_usu_enviarmsj",id);
+		
+		if (chat == null) {
+			model.addAttribute("msjNULLMensajes",0);
+		}
+		else {
+			model.addAttribute("msjNULLMensajes",1);
+		}
+		
+		
+		model.addAttribute("MSJdeleteMatchAndMsj","");	
+		
+		
+	//enviarle el usuario que inicio sesion
+		model.addAttribute("nombresYedad",nombresYedad);
+		model.addAttribute("f1",foto1);
+		return "Chat/Chat";
 	}
+	
+	
+	@PostMapping("/BuscarAmistad/EnviarMensaje")
+	public String sendMensaje(@RequestParam(name="msj_enviar", required=false) 	String msj_enviar,@RequestParam(name="cod_usu_enviarmsj", required=false) int cod_usu_enviarmsj , Model model)  {
+		
+		//enviar msj
+		repoChat.USP_REGISTRAR_CHAT(1, cod_usu_enviarmsj, msj_enviar);
+		
+		List<Match> match;
+		match=repoMatch.USP_LISTAR_MATCH_POR_USUARIO(1);
+		Optional<Usuario> usu2 ;
+		usu2=repoUsua.findById(cod_usu_enviarmsj);
+		List<Chat> chat;
+		
+		chat=repoChat.USP_LISTAR_MATCH_POR_USUARIO(1, cod_usu_enviarmsj);
+		//enviar Match 	
+		model.addAttribute("lstMatch",match);
+		model.addAttribute("foto1",usu2.get().getFoto1());
+		model.addAttribute("nombres",usu2.get().getNombres());
+			
+		//enviar chat 	
+		//head
+		String ChatconNombre="Chat con "+usu2.get().getNombres();
+		model.addAttribute("Chatfoto",usu2.get().getFoto1());
+		model.addAttribute("ChatconNombre",ChatconNombre);
+		model.addAttribute("ChatUserid",cod_usu_enviarmsj);
+		//body
+		model.addAttribute("lstMensajes",chat);
+		model.addAttribute("cod_usu_now",1);
+		model.addAttribute("cod_usu_1_msj",1);
+		model.addAttribute("cod_usu_2_msj",cod_usu_enviarmsj); 
+		model.addAttribute("foto1_msj ",usu2.get().getFoto1()); 
+		//footer
+		model.addAttribute("cod_usu_enviarmsj",cod_usu_enviarmsj);
+		
+		if (chat == null) {
+			model.addAttribute("msjNULLMensajes",0);
+		}
+		else {
+			model.addAttribute("msjNULLMensajes",1);
+		}
+		
+		
+		model.addAttribute("MSJdeleteMatchAndMsj","");	
+		
+		
+	//enviarle el usuario que inicio sesion
+		model.addAttribute("nombresYedad",nombresYedad);
+		model.addAttribute("f1",foto1);
+		return "Chat/Chat";
+	}
+	
+	
+	@PostMapping("/BuscarAmistad/CancelarMatch")
+	public String CancelarMatch( @RequestParam(name="cod_usu_menu", required=false) int cod_usu_menu, Model model) throws ParseException {
+		
+	//cancelar match
+		
+	repoMatch.USP_ELIMINAR_MATCH_POR_USUARIO(1, cod_usu_menu);
+	Chat chat = new Chat();
+	
+	List<Match> match;
+	match=repoMatch.USP_LISTAR_MATCH_POR_USUARIO(1);
+			
+	//enviar Match 	
+		model.addAttribute("lstMatch",match);
+			
+	//enviar chat vacio	
+		model.addAttribute("lstMensajes",chat);
+		model.addAttribute("msjNULLMensajes",0);
+		
+		model.addAttribute("MSJdeleteMatchAndMsj","¡Se ha eliminado el match y los mensajes!");
+		
+	//enviarle el usuario que inicio sesion
+		model.addAttribute("nombresYedad",nombresYedad);
+		model.addAttribute("f1",foto1);
+		return "Chat/Chat";
+		}
+	@PostMapping("/BuscarAmistad/VerPerfil")
+	public String VerPerfil( @RequestParam(name="cod_usu_menu", required=false) int cod_usu_menu, Model model) throws ParseException {
+		
+	/////REDIRECCIONAR A PAGINA VERPERFIL
+		
+	
+		
+	//enviarle el usuario que inicio sesion
+		model.addAttribute("nombresYedad",nombresYedad);
+		model.addAttribute("f1",foto1);
+		return "Chat/Chat";
+		}
 }
