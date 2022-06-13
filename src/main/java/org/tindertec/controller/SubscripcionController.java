@@ -11,14 +11,18 @@ public class SubscripcionController {
 	//@Autowired
 	//@GetMapping
 	//@PostMapping
+
 	@GetMapping("/Suscripcion")
 	public String cargarMegustas( Model model) {
-		
+
+		 String nombresYedad =SeguridadController.nombresYedad;
+		 String foto1=SeguridadController.foto1;
+		 int CodUsuInSession=SeguridadController.CodUsuInSession;	 
 	//enviarle el usuario que inicio sesion
 		
 		
-		model.addAttribute("nombresYedad",BuscarAmistadController.nombresYedad);
-		model.addAttribute("f1",BuscarAmistadController.foto1);
+		model.addAttribute("nombresYedad",nombresYedad);
+		model.addAttribute("f1",foto1);
 
 		return "Suscripcion/Suscripcion";
 		}

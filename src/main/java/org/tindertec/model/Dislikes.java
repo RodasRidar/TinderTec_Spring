@@ -25,7 +25,7 @@ public class Dislikes {
 	
 	private int cod_usu_dislike;
 	@OneToOne
-	@JoinColumn(name="cod_usu_dislike", insertable=false, updatable=false)
-	private Usuario usuario_Like; 
+	@JoinColumn(name="cod_usu", insertable=false, updatable=false)
+	private Usuario usuario_diLike; 
 
 }
