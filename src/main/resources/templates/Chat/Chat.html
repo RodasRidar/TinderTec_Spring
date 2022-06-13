@@ -1,21 +1,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="Tindertec|MeGustas" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tindertec|Chat</title>
-    <link type="image/png" rel="icon"  href="img/tindertec_logo1.png">
-    <link  type="text/css" rel="stylesheet"  href="static/css/style.css" th:href="@{/css/style.css}">
-    <link type="text/css" rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link type="image/png" rel="icon" href="img/tindertec_logo1.png">
+    <link type="text/css" rel="stylesheet" href="static/css/style.css" th:href="@{/css/style.css}">
+    <link type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" th:href="@{/css/style-chat.css}" href="static/css/style-chat.css">
-    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <link  type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"  integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript"
@@ -24,9 +36,11 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -56,119 +70,152 @@
                                 </div>
                                 <div class="card-body contacts_body">
                                     <!-- HACER FOR EACH -->
-                                    <ui class="contacts">
-                                        <div th:each="mtch: ${lstMatch}">
-                                            <li class="active">
-                                                <form action="/BuscarAmistad/Chat" method="post" class="input-group" style=" margin-bottom: 0px;">
-                                                    <input name="id" type="hidden" th:value="${mtch.cod_usu2}">
-                                                    <button class="btn d-flex bd-highlight">
-                                                        <div class="img_cont">
-                                                            <img th:src="@{${mtch.usuario2.foto1}}"
-                                                                class="rounded-circle user_img">
-                                                        </div>
-                                                        <div class="user_info">
-                                                            <span th:text="${mtch.usuario2.nombres}"></span>
-                                                        </div>
-                                                    </button>
-                                                </form>
-                                            </li>
+                                    <div class="contacts">
+                                        <div th:if="${msjNULLMatch == 0 }" style="height: inherit; text-align: center;">
+                                            <h4
+                                                style="margin-top: auto;margin-bottom: auto;margin-left: auto;margin-right: auto;">
+                                                Ve busca amistades 🫂</h4>
                                         </div>
-                                        <div th:if="${MSJdeleteMatchAndMsj != '' }">
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                <strong th:text="${MSJdeleteMatchAndMsj}"></strong>
+                                        <div th:if="${msjNULLMatch == 1 }" style="height: inherit;">
+                                            <div th:each="mtch: ${lstMatch}">
+                                                <li class="active">
+                                                    <form action="/BuscarAmistad/Chat" method="post" class="input-group"
+                                                        style=" margin-bottom: 0px;">
+                                                        <input name="id" type="hidden" th:value="${mtch.cod_usu2}">
+                                                        <button class="btn d-flex bd-highlight">
+                                                            <div class="img_cont">
+                                                                <img th:src="@{${mtch.usuario2.foto1}}"
+                                                                    class="rounded-circle user_img">
+                                                            </div>
+                                                            <div class="user_info">
+                                                                <span th:text="${mtch.usuario2.nombres}"></span>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                </li>
                                             </div>
-                                         <script>
-                                            window.setTimeout(function () {
-                                                $(".alert").fadeTo(500, 0).slideUp(500, function () {
-                                                    $(this).remove();
-                                                });
-                                            }, 2000);
+                                            <div th:if="${MSJdeleteMatchAndMsj != '' }">
+                                                <div class="alert alert-danger alert-dismissible fade show"
+                                                    role="alert">
+                                                    <strong th:text="${MSJdeleteMatchAndMsj}"></strong>
+                                                </div>
+                                                <script>
+                                                    window.setTimeout(function () {
+                                                        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                                                            $(this).remove();
+                                                        });
+                                                    }, 2000);
 
-                                        </script>
+                                                </script>
+                                            </div>
                                         </div>
-
-                                    </ui>
+                                    </div>
                                 </div>
-                                <div class="card-footer"></div>
                             </div>
+                            <div class="card-footer"></div>
                         </div>
                         <div class="col-md-8 col-xl-8 chat">
-                            <div th:if="${msjNULLMensajes == 0 }" style="height: inherit;">
-                                <H1>Seleccione una conversacion</H1>
+                            <div th:if="${msjNULLMatch == 0 }" style="height: inherit;">
+                                <div th:if="${msjNULLMensajes == 0 }" style="height: inherit;">
+                                    <div class="card">
+                                        <H2
+                                            style="margin-top: auto;margin-bottom: auto;margin-left: auto;margin-right: auto;">
+                                            🪧 Sin Conversaciones 🪧</H2>
+                                    </div>
+                                </div>
                             </div>
-                            <div th:if="${msjNULLMensajes == 1 }"  style="height: inherit;">
-                                <div class="card">
-                                    <div class="card-header msg_head" style="border-bottom :solid white 1px !important">
-                                        <div class="d-flex bd-highlight">
-                                            <div class="img_cont">
-                                                <img th:src="@{${Chatfoto}}" class="rounded-circle user_img">
-                                            </div>
-                                            <div class="user_info">
-                                                <span th:text="${ChatconNombre}"></span> <!-- NOMBNRE MATCH -->
-                                            </div>
-                                        </div>
-                                        <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-                                        <div class="action_menu">
-                                            <ul>
-                                                <li>
-
-                                                    <form action="/BuscarAmistad/VerPerfil" method="post">
-                                                        <input name="cod_usu_menu" type="hidden"
-                                                            th:value="${ChatUserid}">
-                                                            <button class="btn" style="color :white"><i class="fas fa-user-circle"></i>Ver Perfil</button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form action="/BuscarAmistad/CancelarMatch" method="post">
-                                                        <input name="cod_usu_menu" type="hidden"
-                                                            th:value="${ChatUserid}">
-                                                            <button class="btn" style="color :white"><i class="fas fa-trash"></i>Cancelar Match</button>
-                                                    </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-
+                            <div th:if="${msjNULLMatch == 1 }" style="height: inherit;">
+                                <div th:if="${msjNULLMensajes == 0 }" style="height: inherit;">
+                                    <div class="card">
+                                        <H2
+                                            style="margin-top: auto;margin-bottom: auto;margin-left: auto;margin-right: auto;">
+                                            ⬅ Selecciona una conversación</H2>
                                     </div>
-                                    <div id="chat_container" class="card-body msg_card_body">
-                                        <!-- HACER FOR EACH DE MENSAJES  -->
-                                        <div th:each="msj: ${lstMensajes}">
-                                            <div th:if="${msj.cod_usu1 == cod_usu_now}">
-                                                <div class="d-flex justify-content-start mb-4">
-                                                    <div class="img_cont_msg">
-                                                        <img th:src="@{${msj.usuario1.foto1}}"
-                                                            class="rounded-circle user_img_msg">
+
+                                </div>
+                                <div th:if="${msjNULLMensajes == 1 }" style="height: inherit;">
+                                    <div class="card">
+                                        <div class="card-header msg_head"
+                                            style="border-bottom :solid white 1px !important">
+                                            <div class="d-flex bd-highlight">
+                                                <div class="img_cont">
+                                                    <img th:src="@{${Chatfoto}}" class="rounded-circle user_img">
+                                                </div>
+                                                <div class="user_info">
+                                                    <span th:text="${ChatconNombre}"></span> <!-- NOMBNRE MATCH -->
+                                                </div>
+                                            </div>
+                                            <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+                                            <div class="action_menu">
+                                                <ul>
+                                                    <li>
+
+                                                        <form action="/BuscarAmistad/VerPerfil" method="post">
+                                                            <input name="cod_usu_menu" type="hidden"
+                                                                th:value="${ChatUserid}">
+                                                            <button class="btn" style="color :white"><i
+                                                                    class="fas fa-user-circle"></i>Ver
+                                                                Perfil</button>
+                                                        </form>
+                                                    </li>
+                                                    <li>
+                                                        <form action="/BuscarAmistad/CancelarMatch" method="post">
+                                                            <input name="cod_usu_menu" type="hidden"
+                                                                th:value="${ChatUserid}">
+                                                            <button class="btn" style="color :white"><i
+                                                                    class="fas fa-trash"></i>Cancelar Match</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                        <div id="chat_container" class="card-body msg_card_body">
+                                        <h5 th:text="${msjNULLMensajes_2}" style="text-align: center; color: darkgray;"></h5>
+                                            <!-- HACER FOR EACH DE MENSAJES  -->
+                                            <div th:each="msj: ${lstMensajes}">
+                                                <div th:if="${msj.cod_usu1 == cod_usu_now}">
+                                                    <div class="d-flex justify-content-start mb-4">
+                                                        <div class="img_cont_msg">
+                                                            <img th:src="@{${msj.usuario1.foto1}}"
+                                                                class="rounded-circle user_img_msg">
+                                                        </div>
+                                                        <div class="msg_cotainer" th:text="${msj.mensaje}">
+                                                        </div>
                                                     </div>
-                                                    <div class="msg_cotainer" th:text="${msj.mensaje}">
+                                                </div>
+                                                <div th:if="${msj.cod_usu2 == cod_usu_now}">
+                                                    <div class="d-flex justify-content-end mb-4">
+                                                        <div class="msg_cotainer_send" th:text="${msj.mensaje}">
+                                                        </div>
+                                                        <div class="img_cont_msg">
+                                                            <img th:src="@{${msj.usuario1.foto1}}"
+                                                                class="rounded-circle user_img_msg">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div th:if="${msj.cod_usu2 == cod_usu_now}">
-                                                <div class="d-flex justify-content-end mb-4">
-                                                    <div class="msg_cotainer_send" th:text="${msj.mensaje}">
-                                                    </div>
-                                                    <div class="img_cont_msg">
-                                                        <img th:src="@{${msj.usuario1.foto1}}"
-                                                            class="rounded-circle user_img_msg">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <span id="final"></span>
                                         </div>
-                                        <span id="final"></span>
-                                    </div>
-                                    <div class="card-footer" style="border-top :solid white 1px !important">
-                                        <form action="/BuscarAmistad/EnviarMensaje" method="post" class="input-group">
-                                            <input name="cod_usu_enviarmsj" type="hidden"
-                                                th:value="${cod_usu_enviarmsj}">
-                                            <textarea class="form-control type_msg" name="msj_enviar"
-                                                placeholder="Escribe un mensaje..."></textarea>
-                                            <button class="input-group-text send_btn input-group-append"><i class="fas fa-location-arrow"></i></button>
-                                        </form>
+                                        <div class="card-footer" style="border-top :solid white 1px !important">
+                                            <form action="/BuscarAmistad/EnviarMensaje" method="post"
+                                                class="input-group">
+                                                <input name="cod_usu_enviarmsj" type="hidden"
+                                                    th:value="${cod_usu_enviarmsj}">
+                                                <textarea class="form-control type_msg" name="msj_enviar"
+                                                    placeholder="Escribe un mensaje..."></textarea>
+                                                <button class="input-group-text send_btn input-group-append"><i
+                                                        class="fas fa-location-arrow"></i></button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
 
+
+
+                        </div>
                     </div>
                 </div>
             </div>

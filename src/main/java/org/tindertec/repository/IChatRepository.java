@@ -16,7 +16,7 @@ public interface IChatRepository extends JpaRepository <Chat, Integer>{
 //docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
 	
 	@Query(value="{CALL USP_LISTAR_CHAT_POR_USUARIO(:cod_usu_1,:cod_usu_2)}",nativeQuery = true)
-	List<Chat> USP_LISTAR_MATCH_POR_USUARIO(@Param("cod_usu_1")int cod_usu1,
+	List<Chat> USP_LISTAR_CHAT_POR_USUARIO(@Param("cod_usu_1")int cod_usu1,
 											 @Param("cod_usu_2")int cod_usu2);
 	
 	/*@Query(value="{CALL USP_REGISTRAR_CHAT(:cod_usu1,:cod_usu2,:mensaje)}",nativeQuery = true)

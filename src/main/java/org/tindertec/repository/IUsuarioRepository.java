@@ -19,4 +19,6 @@ public interface IUsuarioRepository extends JpaRepository <Usuario, Integer>{
 	
 	@Query(value="{CALL USP_USUARIO_LISTAR(:spa_cod_usu)}",nativeQuery = true)
 	Usuario listaBuscarAmistad(@Param("spa_cod_usu")int cod_usu);
+
+	Usuario findByEmailAndClave(String email, String clave);
 }
