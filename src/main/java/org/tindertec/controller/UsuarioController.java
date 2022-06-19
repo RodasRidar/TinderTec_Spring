@@ -44,7 +44,7 @@ public class UsuarioController {
 		model.addAttribute("lstGeneros", repoGenusu.findAll());
 		model.addAttribute("lstInteres", repoInte.findAll());
 
-		return "Usuario/RegistroUsuario";
+		return "/Usuario/RegistroUsuario";
 	}
 
 	@PostMapping("/Usuario/Registrar")
@@ -64,7 +64,7 @@ public class UsuarioController {
 			model.addAttribute("lstInteres", repoInte.findAll());
 
 			model.addAttribute("msjConfirmation", "Ups!,Ocurrio un problema en el registro");
-			return "Usuario/RegistroUsuario";
+			return "/Usuario/RegistroUsuario";
 		}
 	}
 
@@ -114,7 +114,7 @@ public class UsuarioController {
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
 
-		return "MantenerUsuario/MantenerUsuario";
+		return "/MantenerUsuario/MantenerUsuario";
 
 	}
 
@@ -294,7 +294,7 @@ public class UsuarioController {
 			model.addAttribute("foto5Gal", currentUsus.get().getFoto5());
 		}
 
-		return "MantenerUsuario/MantenerUsuario";
+		return "/MantenerUsuario/MantenerUsuario";
 	}
 	
 	@Transactional
@@ -308,7 +308,7 @@ public class UsuarioController {
 		} catch (Exception e) {
 			
 			model.addAttribute("msjConfirmacionAddFoto", "Error al eliminar usuario");
-			return "MantenerUsuario/MantenerUsuario";
+			return "/MantenerUsuario/MantenerUsuario";
 		}
 		
 	}

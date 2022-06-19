@@ -62,7 +62,7 @@ public class SeguridadController {
 		
 		//model.addAttribute("usuario", new Usuario());
 		model.addAttribute("msjLogin",msj);
-		return "/Login/login";
+		return "/Login/Login";
 			
 	}
 
@@ -76,7 +76,7 @@ public class SeguridadController {
 		edad="";
 		CodUsuInSession=0;
 		
-		return "Login/Login";
+		return "/Login/Login";
 		}
 	
 	public String obtenerEdad(String fecna) throws ParseException {
