@@ -22,24 +22,27 @@
         <div class="second-partition">
             <div class="app likes">
                 <div class="cards-container">
-						<h1 th:text="${msjEliminarLike}"></h1>
+                	<div style="margin: auto;">
+                		<h1 th:text="${msjEliminarLike}"></h1>
+                	</div>
+						
                     <div class="row pb-5 mb-4" >
                         <div class="col-lg-3 col-md-6 mb-4 mb-lg-5" th:each="usu: ${listaUsuarios}">
                             <div class="card shadow-sm border-0 m-2">
                                 <div class="card-body p-0 like_img">
                                     <div class="like_img_container">
                                         <img th:src="${usu.foto1}"
-                                            alt="" class="w-100 img_like">
+                                            alt="" class="w-100 img_like" style="width: 100%;">
                                     </div>
 
                                     <div class="p-2" style="text-align: center;">
-                                        <h5 class="mb-0" th:text="${usu.nombres}">Rocio Tabara</h5>
+                                        <h5 class="mb-0" th:text="${usu.nombres}"></h5>
                                         <p class="small mb-0" th:text="${usu.carrera.des_carrera}"></p>
                                         <p class="small mb-0" th:text="${usu.sede.des_sede}"></p>
                                         
                                         <form action="/MeGustas/Eliminar" method="post"> 
                                         <input type="hidden" name="cod_usu" th:value="${usu.cod_usu}">
-                                        <button class="btn dislikebtn" type="post"><i
+                                        <button class="btn dislikebtn" type="submit"><i
                                                 class="fa fa-thumbs-o-down"
                                                 style="font-family: 'FontAwesome';"></i>
                                         </button>

@@ -49,7 +49,7 @@ public class BuscarAmistadController {
 		return age;
 	}
 
-	@GetMapping("/")
+	@GetMapping("/BuscarAmistar/Bienvenida")
 	public String cargarBienvenida(Model model) throws ParseException {
 		String nombresYedad = SeguridadController.nombresYedad;
 		String foto1 = SeguridadController.foto1;
@@ -96,6 +96,7 @@ public class BuscarAmistadController {
 // hacer con @RequestParam , recuperar el parametro enviado por el formulario post
 		int codigoValidacion = -1;
 		String mensaje = repoLike.USP_INSERTAR_LIKE(CodUsuInSession, usu.getCod_usu());
+		System.out.println(mensaje);
 		if (mensaje == "MATCH") {
 			model.addAttribute("mensajeBuscarAmistad", mensaje);
 		}
@@ -262,7 +263,7 @@ public class BuscarAmistadController {
 		Optional<Usuario> usu2;
 		List<Chat> chat;
 
-		match = repoMatch.USP_LISTAR_MATCH_POR_USUARIO(1);
+		match = repoMatch.USP_LISTAR_MATCH_POR_USUARIO(CodUsuInSession);
 		usu2 = repoUsua.findById(cod_usu_enviarmsj);
 		chat = repoChat.USP_LISTAR_CHAT_POR_USUARIO(CodUsuInSession, cod_usu_enviarmsj);
 

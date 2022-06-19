@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,26 +26,28 @@ public class SeguridadController {
 	private IUsuarioRepository repoUsua;
 	
 	
-	@GetMapping("/Login")
+	@GetMapping("/")
 	public String login(Model model) {
 		model.addAttribute("usuario",new Usuario());
-		return "/Login/login";
+		return "/Login/Login";
+	}
+	@GetMapping("/Login")
+	public String login2(Model model) {
+		model.addAttribute("usuario",new Usuario());
+		return "/Login/Login";
 	}
 	
-	@PostMapping("/Login/Bienvenida")
+	@Transactional
+	@PostMapping("/Ingreso")
 	public String validarUsuario(@ModelAttribute Usuario usuario, Model model) throws ParseException {
-	System.out.println(usuario);
+
 	
-	Usuario u =repoUsua.findByEmailAndClave(usuario.getEmail(), usuario.getClave());
-	
-	if (u == null) {
-		//model.addAttribute("usuario", new Usuario());
-		model.addAttribute("mensajeError","Usuario Clave Incorrecto");
-		return "/Login/login";
-		} 
-	else{
+	String msj =repoUsua.usp_usuario_acceso(usuario.getEmail(), usuario.getClave());
+
+	if (msj.equals("OK")) {
+
+		Usuario u=repoUsua.findByEmailAndClave(usuario.getEmail(), usuario.getClave());
 		model.addAttribute("usuario",u);
-		
 			CodUsuInSession=u.getCod_usu();
 			edad=obtenerEdad(repoUsua.findById(u.getCod_usu()).get().getFecha_naci());
 		    nombresYedad=repoUsua.findById(u.getCod_usu()).get().getNombres()+","+edad;
@@ -52,21 +56,27 @@ public class SeguridadController {
 			model.addAttribute("nombresYedad",nombresYedad);
 			model.addAttribute("f1",foto1);
 
+		return "/BuscarAmistad/Bienvenida";
+		} 
+	else{
 		
-		
-		return "BuscarAmistad/Bienvenida";
-		}
+		//model.addAttribute("usuario", new Usuario());
+		model.addAttribute("msjLogin",msj);
+		return "/Login/login";
+			
+	}
+
 	}
 	@GetMapping("/LogOut")
 	public String logOut( Model model) {
 		model.addAttribute("usuario",new Usuario());
-		/*
+		
 		nombresYedad="";
 		foto1="";
 		edad="";
-		CodUsuInSession=0;*/
+		CodUsuInSession=0;
 		
-		return "Login/login";
+		return "Login/Login";
 		}
 	
 	public String obtenerEdad(String fecna) throws ParseException {
