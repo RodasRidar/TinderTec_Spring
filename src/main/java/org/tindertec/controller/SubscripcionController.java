@@ -24,6 +24,6 @@ public class SubscripcionController {
 		model.addAttribute("nombresYedad",nombresYedad);
 		model.addAttribute("f1",foto1);
 
-		return "/Suscripcion/Suscripcion";
+		return "Suscripcion/Suscripcion";
 		}
 }

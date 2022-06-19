@@ -58,7 +58,7 @@ public class BuscarAmistadController {
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
 
-		return "/BuscarAmistad/Bienvenida";
+		return "BuscarAmistad/Bienvenida";
 	}
 
 	@GetMapping("/Inicio")
@@ -85,7 +85,7 @@ public class BuscarAmistadController {
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
 
-		return "/BuscarAmistad/BuscarAmistad";
+		return "BuscarAmistad/BuscarAmistad";
 	}
 
 	@PostMapping("BuscarAmistad/Like")
@@ -119,7 +119,7 @@ public class BuscarAmistadController {
 
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
-		return "/BuscarAmistad/BuscarAmistad";
+		return "BuscarAmistad/BuscarAmistad";
 	}
 
 	@PostMapping("/BuscarAmistad/disLike")
@@ -182,7 +182,7 @@ public class BuscarAmistadController {
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
 
-		return "/Chat/Chat";
+		return "Chat/Chat";
 	}
 
 	@PostMapping("/BuscarAmistad/Chat")
@@ -247,7 +247,7 @@ public class BuscarAmistadController {
 		// enviarle el usuario que inicio sesion
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
-		return "/Chat/Chat";
+		return "Chat/Chat";
 	}
 
 	@PostMapping("/BuscarAmistad/EnviarMensaje")
@@ -304,7 +304,7 @@ public class BuscarAmistadController {
 		// enviarle el usuario que inicio sesion
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
-		return "/Chat/Chat";
+		return "Chat/Chat";
 	}
 
 	@PostMapping("/BuscarAmistad/CancelarMatch")
@@ -350,7 +350,7 @@ public class BuscarAmistadController {
 		// enviarle el usuario que inicio sesion
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
-		return "/Chat/Chat";
+		return "Chat/Chat";
 	}
 
 	@PostMapping("/BuscarAmistad/VerPerfil")
@@ -366,6 +366,6 @@ public class BuscarAmistadController {
 		// enviarle el usuario que inicio sesion
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
-		return "/hat/Chat";
+		return "Chat/Chat";
 	}
 }

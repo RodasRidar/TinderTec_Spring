@@ -42,7 +42,7 @@ public class MeGustasController {
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
 		model.addAttribute("listaUsuarios", lstusu);
-		return "/MeGustas/MeGustas";
+		return "MeGustas/MeGustas";
 	}
 
 	@PostMapping("/MeGustas/Eliminar")
@@ -67,7 +67,7 @@ public class MeGustasController {
 		model.addAttribute("nombresYedad", nombresYedad);
 		model.addAttribute("f1", foto1);
 
-		return "/MeGustas/MeGustas";
+		return "MeGustas/MeGustas";
 	}
 
 }
