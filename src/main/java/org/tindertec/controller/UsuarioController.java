@@ -56,7 +56,7 @@ public class UsuarioController {
 					usuario.getCod_interes(), usuario.getDescripcion(), usuario.getFoto1());
 			model.addAttribute("msjConfirmation",
 					"¡Se registro el usuario " + usuario.getNombres() + " correctamente!");
-			return "/Login/Login";
+			return "Login/Login";
 		} catch (Exception e) {
 			model.addAttribute("lstSedes", repoSed.findAll());
 			model.addAttribute("lstCarreras", repoCar.findAll());
