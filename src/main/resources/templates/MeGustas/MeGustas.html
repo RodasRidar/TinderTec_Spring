@@ -24,7 +24,9 @@
   border-radius: 4px;
   cursor: pointer;
   font-family: "Roboto Slab";
-  margin-left: 350px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1;
 }
 .button:hover {
   background-color: #fae6e9;
@@ -39,6 +41,8 @@
 		</script>
         <div class="second-partition">
             <div class="app likes">
+            
+            <div th:if="${msjEliminarLike == null}">
                 <div class="cards-container">
 						<h1 th:text="${msjEliminarLike}"></h1>
                     <div class="row pb-5 mb-4" >
@@ -55,6 +59,35 @@
                                         <p class="small mb-0" th:text="${usu.carrera.des_carrera}"></p>
                                         <p class="small mb-0" th:text="${usu.sede.des_sede}"></p>
                                         
+                                        <form action="/MeGustas/Eliminar" method="post" > 
+                                        <input type="hidden" name="cod_usu" th:value="${usu.cod_usu}" >
+                                        <button class="btn dislikebtn" ><i class="fa fa-thumbs-o-down" style="font-family: 'FontAwesome';"></i>
+                                        </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+               </div>
+               
+                   <div class="cards-container" style="align-items: center;" th:if="${msjEliminarLike == '!No has dado ningun ❤, ve busca amistades!' || msjEliminarLike ==' 📌 !Ya no hay mas me gustas que ver!'}">
+						<h1 th:text="${msjEliminarLike}"  style="margin-top: auto;margin-bottom: auto;"></h1>
+                    <div class="row pb-5 mb-4" >
+                        <div class="col-lg-3 col-md-6 mb-4 mb-lg-5" th:each="usu: ${listaUsuarios}">
+                            <div class="card shadow-sm border-0 m-2">
+                                <div class="card-body p-0 like_img">
+                                    <div class="like_img_container">
+                                        <img th:src="${usu.foto1}"
+                                            alt="" class="w-100 img_like">
+                                    </div>
+
+                                    <div class="p-2" style="text-align: center;">
+                                        <h5 class="mb-0" th:text="${usu.nombres}"></h5>
+                                        <p class="small mb-0" th:text="${usu.carrera.des_carrera}"></p>
+                                        <p class="small mb-0" th:text="${usu.sede.des_sede}"></p>
                                         <form action="/MeGustas/Eliminar" method="post"> 
                                         <input type="hidden" name="cod_usu" th:value="${usu.cod_usu}">
                                         <button class="btn dislikebtn" ><i class="fa fa-thumbs-o-down" style="font-family: 'FontAwesome';"></i>
@@ -67,8 +100,10 @@
 
                     </div>
                 </div>
-                <form action="/MeGustas/Reporte" method="post">
-					<input id="btnLikes" class="button" type="submit" value="Reporte de mis Me Gusta">
+               
+                
+                <form th:if="${msjEliminarLike == null}" action="/MeGustas/Reporte" method="post" style="margin-top: -24px;display: flex;">
+					<input id="btnLikes" class="button" type="submit" value="Reporte de mis Me Gusta" >
            		 </form>
             </div>
 
