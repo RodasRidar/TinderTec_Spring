@@ -29,12 +29,12 @@ public class SeguridadController {
 	@GetMapping("/")
 	public String login(Model model) {
 		model.addAttribute("usuario",new Usuario());
-		return "/Login/Login";
+		return "Login/Login";
 	}
 	@GetMapping("/Login")
 	public String login2(Model model) {
 		model.addAttribute("usuario",new Usuario());
-		return "/Login/Login";
+		return "Login/Login";
 	}
 	
 	@Transactional
@@ -56,13 +56,13 @@ public class SeguridadController {
 			model.addAttribute("nombresYedad",nombresYedad);
 			model.addAttribute("f1",foto1);
 
-		return "/BuscarAmistad/Bienvenida";
+		return "BuscarAmistad/Bienvenida";
 		} 
 	else{
 		
 		//model.addAttribute("usuario", new Usuario());
 		model.addAttribute("msjLogin",msj);
-		return "/Login/login";
+		return "Login/Login";
 			
 	}
 

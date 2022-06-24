@@ -56,7 +56,7 @@ body{
 	height: 256px;
 }
 .app{
-
+	overflow: auto;
     position: absolute;
     Z-INDEX: 1;
     height: 60vh;

@@ -10,6 +10,36 @@ import org.tindertec.model.*;
 
 import java.util.List;
 
+
+///
+
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.tindertec.model.Usuario;
+import org.tindertec.repository.IUsuarioRepository;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+///
 @Controller
 public class MeGustasController {
 
@@ -19,6 +49,10 @@ public class MeGustasController {
 	ILikesRepository likesRepo;
 	@Autowired
 	IDislikesRepository disLikesRepo;
+	@Autowired
+	private DataSource dataSource;
+	@Autowired
+	private ResourceLoader resourceLoader;
 	// private IUsuarioRepository repoUsua;
 	// @GetMapping
 	// @PostMapping
@@ -69,5 +103,23 @@ public class MeGustasController {
 
 		return "MeGustas/MeGustas";
 	}
+	
+	@PostMapping("/MeGustas/Reporte")
+	public void reporteMisLikes(HttpServletResponse response) {
+		int CodUsuInSession=SeguridadController.CodUsuInSession;
+		response.setHeader("Content-Disposition", "inline;");
+		response.setContentType("application/pdf");
 
+		try {
+			String ru = resourceLoader.getResource("classpath:reportes/Blank_A4.jasper").getURI().getPath();
+			HashMap parametros = new HashMap();
+			parametros.put("CodUsuInSession", CodUsuInSession);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(ru, parametros, dataSource.getConnection());
+			OutputStream outStream = response.getOutputStream();
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

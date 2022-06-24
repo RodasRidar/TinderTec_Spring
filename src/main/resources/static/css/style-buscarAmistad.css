@@ -10,6 +10,12 @@ body {
 .container {
 	display: flex;
 }
+.animacion {
+		color: red;
+		display: inline-block; /*needed to trigger update */
+		animation: bounce .5s alternate infinite ease-in;
+}
+
 
 .content {
 	width: 100%;
