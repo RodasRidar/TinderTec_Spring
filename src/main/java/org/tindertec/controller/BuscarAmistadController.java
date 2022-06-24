@@ -93,26 +93,41 @@ public class BuscarAmistadController {
 		String nombresYedad = SeguridadController.nombresYedad;
 		String foto1 = SeguridadController.foto1;
 		int CodUsuInSession = SeguridadController.CodUsuInSession;
-// hacer con @RequestParam , recuperar el parametro enviado por el formulario post
+		
 		int codigoValidacion = -1;
-		String mensaje = repoLike.USP_INSERTAR_LIKE(CodUsuInSession, usu.getCod_usu());
-		System.out.println(mensaje);
-		if (mensaje == "MATCH") {
-			model.addAttribute("mensajeBuscarAmistad", mensaje);
-		}
-		// CARD
-		Usuario u = repoUsua.listaBuscarAmistad(CodUsuInSession);
-		if (u == null) {
+		
+		String mensaje ="";
+		 mensaje = repoLike.USP_INSERTAR_LIKE(CodUsuInSession, usu.getCod_usu());
+
+		if (mensaje != null) {
+			model.addAttribute("mensajeBuscarAmistad", 1);
+			codigoValidacion = 1;
+			Usuario user = new Usuario();
+			user=repoUsua.getOne(usu.getCod_usu());
 
 			model.addAttribute("codigoValidacion", codigoValidacion);
-		} else {
-			codigoValidacion = 1;
-			model.addAttribute("codigoValidacion", codigoValidacion);
-			model.addAttribute("nombreYedadBusAmi", u.getNombres() + " ," + obtenerEdad(u.getFecha_naci()));
-			model.addAttribute("fotoBusAmi", u.getFoto1());
-			model.addAttribute("codigoBusAmi", u.getCod_usu());
-			model.addAttribute("sedeBusAmi", u.getSede().getDes_sede());
-			model.addAttribute("carreraBusAmi", u.getCarrera().getDes_carrera());
+			model.addAttribute("nombreYedadBusAmi", user.getNombres() + " ," + obtenerEdad(user.getFecha_naci()));
+			model.addAttribute("fotoBusAmi", user.getFoto1());
+			model.addAttribute("codigoBusAmi", user.getCod_usu());
+			model.addAttribute("sedeBusAmi",user.getSede().getDes_sede());
+			model.addAttribute("carreraBusAmi", user.getCarrera().getDes_carrera());
+			
+		}
+		else {
+			Usuario u = repoUsua.listaBuscarAmistad(CodUsuInSession);
+			if (u == null) {
+
+				model.addAttribute("codigoValidacion", codigoValidacion);
+			} else {
+				codigoValidacion = 1;
+				model.addAttribute("codigoValidacion", codigoValidacion);
+				model.addAttribute("nombreYedadBusAmi", u.getNombres() + " ," + obtenerEdad(u.getFecha_naci()));
+				model.addAttribute("fotoBusAmi", u.getFoto1());
+				model.addAttribute("codigoBusAmi", u.getCod_usu());
+				model.addAttribute("sedeBusAmi", u.getSede().getDes_sede());
+				model.addAttribute("carreraBusAmi", u.getCarrera().getDes_carrera());
+
+			}
 		}
 
 		// enviarle el usuario que inicio sesion
