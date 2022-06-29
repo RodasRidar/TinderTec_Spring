@@ -11,6 +11,8 @@
     <link href="static/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link href="static/css/style-chat.css" rel="stylesheet" type="text/css" th:href="@{/css/style-chat.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
 .button {
@@ -41,8 +43,7 @@
 		</script>
         <div class="second-partition">
             <div class="app likes">
-            
-            <div th:if="${msjEliminarLike == null}">
+            <div th:if="${msjEliminarLike == null}" style="overflow: auto ;height: inherit;" >
                 <div class="cards-container">
 						<h1 th:text="${msjEliminarLike}"></h1>
                     <div class="row pb-5 mb-4" >
@@ -72,7 +73,6 @@
                     </div>
                 </div>
                </div>
-               
                    <div class="cards-container" style="align-items: center;" th:if="${msjEliminarLike == '!No has dado ningun ❤, ve busca amistades!' || msjEliminarLike ==' 📌 !Ya no hay mas me gustas que ver!'}">
 						<h1 th:text="${msjEliminarLike}"  style="margin-top: auto;margin-bottom: auto;"></h1>
                     <div class="row pb-5 mb-4" >

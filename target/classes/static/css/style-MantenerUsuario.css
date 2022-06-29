@@ -236,8 +236,8 @@ p {
 }
 
 .profile-page .gallery img {
-    max-height: 382px;
-    width: 100%;
+   max-height: 40vh;
+	max-width: 11vw;
     margin-bottom: 2.142rem;
 }
 
